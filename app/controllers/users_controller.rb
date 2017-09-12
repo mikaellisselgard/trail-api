@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UsersController < ApplicationController
   skip_before_action :authenticate_request, only: :create
   before_action :set_user, only: %w(show update)
