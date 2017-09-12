@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912194811) do
+ActiveRecord::Schema.define(version: 20170912204003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locatable_items", force: :cascade do |t|
+    t.bigint "location_id"
+    t.string "locatable_type"
+    t.bigint "locatable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["locatable_type", "locatable_id"], name: "index_locatable_items_on_locatable_type_and_locatable_id"
+    t.index ["location_id"], name: "index_locatable_items_on_location_id"
+  end
 
   create_table "locations", force: :cascade do |t|
     t.decimal "lat", precision: 9, scale: 6, null: false
@@ -30,4 +40,5 @@ ActiveRecord::Schema.define(version: 20170912194811) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "locatable_items", "locations"
 end
