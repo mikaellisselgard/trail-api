@@ -34,6 +34,9 @@ gem 'jwt'
 # https://github.com/nebulab/simple_command
 gem 'simple_command'
 
+# https://github.com/geokit/geokit-rails
+gem 'geokit-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
