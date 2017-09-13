@@ -12,23 +12,24 @@ describe AuthorizeAPIRequestService, type: :service do
       let(:headers) { { 'Authorization' => jwt } }
 
       it 'succeeds' do
-        expect(service.call(headers))
-          .to be_success
+        expect(service.call(headers)).to be_success
       end
     end
-  end
 
-  describe '.call' do
-    context 'when authorize API request is not successful' do
-      let(:headers) { { 'Authorization' => "incorrect_token" } }
+    context 'when authorize API request with invalid token' do
+      let(:headers) { { 'Authorization' => 'invalid_token' } }
 
       it 'fails' do
-        expect(service.call(headers))
-          .to be_failure
+        expect(service.call(headers)).to be_failure
+      end
+    end
+
+    context 'when authorize API request with missing token' do
+      let(:headers) { { 'Authorization' => '' } }
+
+      it 'fails' do
+        expect(service.call(headers)).to be_failure
       end
     end
   end
 end
-
-
-
