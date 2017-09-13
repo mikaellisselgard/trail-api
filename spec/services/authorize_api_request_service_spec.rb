@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 describe AuthorizeAPIRequestService, type: :service do
   subject(:service) { described_class }
   let!(:user) { create(:user) }
