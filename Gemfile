@@ -60,6 +60,8 @@ group :test do
   gem 'rspec-rails'
   # https://github.com/DatabaseCleaner/database_cleaner
   gem 'database_cleaner'
+  # https://github.com/colszowka/simplecov
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
