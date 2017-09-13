@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 describe AuthorizeAPIRequestService do
   subject(:service) { described_class }
-  # TODO: change build to create when db cleaner implemented
-  let!(:user) { build(:user) }
+  let!(:user) { create(:user) }
   let!(:jwt) { AuthenticateUserService.call(user.email, user.password).result }
 
   describe '.call' do

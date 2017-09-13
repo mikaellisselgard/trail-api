@@ -55,9 +55,11 @@ end
 
 group :test do
   # https://github.com/rspec/rspec-core
-  gem "rspec-core"
+  gem 'rspec-core'
   # https://github.com/rspec/rspec-rails
-  gem "rspec-rails"
+  gem 'rspec-rails'
+  # https://github.com/DatabaseCleaner/database_cleaner
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

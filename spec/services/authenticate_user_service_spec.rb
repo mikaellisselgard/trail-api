@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 describe AuthenticateUserService do
   subject(:service) { described_class }
 
   before do
-    # TODO: change build to create when db cleaner implemented
-    build(:user, email: 'test@example.com', password: 'secret')
+    create(:user, email: 'test@example.com', password: 'secret')
   end
 
   describe '.call' do
