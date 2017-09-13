@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe AuthorizeAPIRequestService do
+describe AuthorizeAPIRequestService, type: :service do
   subject(:service) { described_class }
   let!(:user) { create(:user) }
   let!(:jwt) { AuthenticateUserService.call(user.email, user.password).result }

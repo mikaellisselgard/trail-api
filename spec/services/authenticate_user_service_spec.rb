@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe AuthenticateUserService do
+describe AuthenticateUserService, type: :service do
   subject(:service) { described_class }
 
   before do
