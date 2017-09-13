@@ -8,4 +8,7 @@ class Location < ApplicationRecord
            source_type: 'Fish'
 
   acts_as_mappable
+
+  validates :lat, presence: true
+  validates :lng, presence: true
 end
