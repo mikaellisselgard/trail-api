@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Location < ApplicationRecord
+  belongs_to :user
+
   has_many :locatable_items
   has_many :fishes,
            through: :locatable_items,
