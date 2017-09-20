@@ -13,4 +13,5 @@ class Location < ApplicationRecord
 
   validates :lat, presence: true
   validates :lng, presence: true
+  validates :locatable_items, presence: true
 end
