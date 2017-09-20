@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 Rails.application.routes.draw do
-  post 'v1/authenticate', to: 'authentication#authenticate'
+  post 'v1/authenticate_user', to: 'authentication#authenticate_user'
 
   get    'v1/locations',     to: 'locations#index'
   post   'v1/locations',     to: 'locations#create'

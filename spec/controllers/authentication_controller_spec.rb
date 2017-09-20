@@ -3,11 +3,11 @@
 require 'spec_helper'
 
 describe AuthenticationController, type: :controller do
-  describe '#authenticate' do
+  describe '#authenticate_user' do
     context 'with valid credentials' do
       let(:user) { create(:user) }
       it 'returns a JWT token' do
-        post :authenticate, params: {
+        post :authenticate_user, params: {
           email: user.email,
           password: user.password
         }
@@ -19,7 +19,7 @@ describe AuthenticationController, type: :controller do
 
     context 'with invalid credentials' do
       it 'returns 401' do
-        post :authenticate, params: {
+        post :authenticate_user, params: {
           email: 'test@example.com',
           password: 'incorrect'
         }
