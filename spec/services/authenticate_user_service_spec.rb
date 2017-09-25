@@ -9,18 +9,18 @@ describe AuthenticateUserService, type: :service do
     create(:user, email: 'test@example.com', password: 'secret')
   end
 
-  describe '.call' do
+  describe '#perform' do
     context 'when authentication is successful' do
       it 'succeeds' do
-        expect(service.call('test@example.com', 'secret'))
-          .to be_success
+        auth_service = service.new('test@example.com', 'secret')
+        expect(auth_service.perform).not_to be false
       end
     end
 
     context 'when authentication is not successful' do
       it 'fails' do
-        expect(service.call('incorrect_email', 'incorrect_password'))
-          .to be_failure
+        auth_service = service.new('incorrect_email', 'incorrect_password')
+        expect(auth_service.perform).to be false
       end
     end
   end

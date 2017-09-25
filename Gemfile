@@ -30,9 +30,6 @@ gem 'active_model_serializers', '~> 0.10.0'
 # https://github.com/jwt/ruby-jwt
 gem 'jwt'
 
-# https://github.com/nebulab/simple_command
-gem 'simple_command'
-
 # https://github.com/geokit/geokit-rails
 gem 'geokit-rails'
 

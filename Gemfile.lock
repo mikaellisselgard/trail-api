@@ -149,7 +149,6 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
-    simple_command (0.0.9)
     simplecov (0.15.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -195,7 +194,6 @@ DEPENDENCIES
   rspec-core
   rspec-rails
   rubocop
-  simple_command
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)

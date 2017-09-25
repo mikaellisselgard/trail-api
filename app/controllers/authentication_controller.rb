@@ -4,11 +4,14 @@ class AuthenticationController < ApplicationController
   skip_before_action :authenticate_request
 
   def authenticate_user
-    service = AuthenticateUserService.call(params[:email], params[:password])
-    if service.success?
-      render json: { token: service.result }
+    token = AuthenticateUserService.new(
+      params[:email], params[:password]
+    ).perform
+
+    if token
+      render json: { token: token }
     else
-      render json: { errors: service.errors }, status: :unauthorized
+      render json: { errors: 'invalid credentials' }, status: :unauthorized
     end
   end
 end
