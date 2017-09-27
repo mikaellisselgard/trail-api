@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   skip_before_action :authenticate_request, only: :create
-  before_action :set_user, only: %w(show update)
+  before_action :set_user, only: %w[show update]
 
   def show
     render json: @user
