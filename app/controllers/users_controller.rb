@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       render json: @user
     else
-      render json: { errors: @user.errors }, status: :bad_request
+      render_error(@user, :bad_request)
     end
   end
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       render json: @user
     else
-      render json: { errors: @user.errors }, status: :bad_request
+      render_error(@user, :bad_request)
     end
   end
 

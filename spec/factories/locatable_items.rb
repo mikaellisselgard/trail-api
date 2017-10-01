@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :locatable_item do
-    location nil
-    locatable nil
+    association :locatable, factory: :fish
+    locatable_type 'Fish'
+    location
   end
 end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :fish do
-    species "MyString"
+    species 'PIKE'
   end
 end
