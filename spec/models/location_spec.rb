@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Location, type: :model do
-  let!(:location) { create(:location) }
+  let!(:location) { create(:location_with_fish) }
 
   describe '.closest_by' do
     it 'should return the closest location for given coordinates' do

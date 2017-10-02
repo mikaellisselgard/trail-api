@@ -10,6 +10,10 @@ class Location < ApplicationRecord
            through: :locatable_items,
            source: :locatable,
            source_type: 'Fish'
+  has_many :mushrooms,
+           through: :locatable_items,
+           source: :locatable,
+           source_type: 'Mushroom'
 
   acts_as_mappable default_units: :kms
 

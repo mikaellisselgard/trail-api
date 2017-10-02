@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe LocationsController, type: :controller do
   let!(:fish) { create(:fish) }
-  let!(:location) { create(:location) }
+  let!(:location) { create(:location_with_fish) }
   let!(:jwt) { generate_jwt(location.user) }
 
   before do
@@ -105,12 +105,16 @@ describe LocationsController, type: :controller do
   end
 
   describe '#closest' do
+    let!(:location_mushroom) { create(:location_with_mushroom) }
+    let!(:jwt) { generate_jwt(location_mushroom.user) }
+
     it 'should return closest location' do
-      get :closest, params: { lat: 58.332, lng: 15.333, type: 'fish' }
+      request.headers['Authorization'] = jwt
+      get :closest, params: { lat: 57.332, lng: 15.111, type: 'mushroom' }
       data = JSON.parse(response.body)
 
       expect(response).to have_http_status(200)
-      expect(data['id']).to eq(location.id)
+      expect(data['id']).to eq(location_mushroom.id)
     end
   end
 
