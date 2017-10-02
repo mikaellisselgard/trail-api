@@ -1,29 +1,37 @@
 AllCops:
-  TargetRubyVersion: 2.4.0
+  TargetRubyVersion: 2.4
   DisplayCopNames: true
   DisplayStyleGuide: true
   Exclude:
     - tmp/**/*
     - bin/*
     - Capfile
+    - config.ru
     - config/boot.rb
     - config/environment.rb
-    - config/initializers/version.rb
+    - config/application.rb
+    - config/puma.rb
+    - config/spring.rb
+    - config/initializers/*
+    - config/environments/*
     - db/schema.rb
     - Gemfile
     - Guardfile
     - Rakefile
+    - db/migrate/**/*
 
 Rails:
   Enabled: true
 
 Metrics/LineLength:
   Exclude:
-    - "config/**/*"
+    - config/**/*
 
 Metrics/BlockLength:
   Exclude:
-    - "config/environments/**/*"
+    - config/environments/**/*
+    - config/**/*
+    - spec/**/*.rb
 
 Style/AsciiComments:
   Enabled: false
@@ -37,14 +45,14 @@ Style/Documentation:
 Style/DoubleNegation:
   Enabled: false
 
-Style/IndentHash:
+Layout/IndentHash:
   EnforcedStyle: consistent
 
-Style/SpaceAroundEqualsInParameterDefault:
+Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
 Style/TrivialAccessors:
   AllowPredicates: true
 
-Style/SpaceBeforeFirstArg:
+Layout/SpaceBeforeFirstArg:
   Enabled: false

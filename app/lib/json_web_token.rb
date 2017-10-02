@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class JSONWebToken
   class << self
     # Generate a JWT token
