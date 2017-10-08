@@ -11,6 +11,11 @@ class ApplicationController < ActionController::API
     render json: { error: 'Not authorized' }, status: 401 unless @current_user
   end
 
+  def ensure_schema!(schema_class)
+    schema = Schema.new(schema_class).validation.call(params)
+    render_error(schema, :bad_request) unless schema.success?
+  end
+
   def render_error(resource, status)
     render json: { errors: resource.errors }, status: status
   end

@@ -8,7 +8,7 @@ describe Location, type: :model do
   describe '.closest_by' do
     it 'should return the closest location for given coordinates' do
       closest_location = Location.closest_by(
-        [58.332, 15.332],
+        Coordinate.new(58.332, 15.332),
         'fish',
         location.user_id
       )
@@ -20,8 +20,7 @@ describe Location, type: :model do
   describe '.within_by' do
     it 'should return locations within given distance for given coordinates' do
       locations_within = Location.within_by(
-        10,
-        [58.332, 15.332],
+        Area.new(10, Coordinate.new(58.332, 15.332)),
         'fish',
         location.user_id
       )

@@ -33,6 +33,9 @@ gem 'jwt'
 # https://github.com/geokit/geokit-rails
 gem 'geokit-rails'
 
+# https://github.com/dry-rb/dry-validation
+gem 'dry-validation'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console

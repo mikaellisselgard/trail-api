@@ -35,13 +35,11 @@ describe LocationsController, type: :controller do
     context 'when params are valid' do
       it 'should return location' do
         post :create, params: {
-          location: {
-            lat: 54.1234,
-            lng: 15.1234
-          },
+          lat: 54.1234,
+          lng: 15.1234,
           type: 'fish',
           item_ids: [fish.id]
-        }
+        }, as: :json
         data = JSON.parse(response.body)
 
         expect(response).to have_http_status(200)
@@ -52,12 +50,10 @@ describe LocationsController, type: :controller do
     context 'when params are invalid' do
       it 'should return location errors' do
         post :create, params: {
-          location: {
-            lat: 54.1234
-          },
+          lat: 54.1234,
           type: 'fish',
           item_ids: [1]
-        }
+        }, as: :json
         data = JSON.parse(response.body)
 
         expect(response).to have_http_status(400)

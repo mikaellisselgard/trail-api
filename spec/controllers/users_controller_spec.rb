@@ -20,11 +20,9 @@ describe UsersController, type: :controller do
     context 'when params are valid' do
       it 'should return user' do
         post :create, params: {
-          user: {
-            name: 'Test User',
-            email: 'test@example.com',
-            password: 'password'
-          }
+          name: 'Test User',
+          email: 'test@example.com',
+          password: 'password'
         }
 
         data = JSON.parse(response.body)
@@ -36,10 +34,8 @@ describe UsersController, type: :controller do
     context 'when params are invalid' do
       it 'should return user errors' do
         post :create, params: {
-          user: {
-            name: 'Test User',
-            email: 'test@example.com'
-          }
+          name: 'Test User',
+          email: 'test@example.com'
         }
 
         data = JSON.parse(response.body)

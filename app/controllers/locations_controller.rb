@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class LocationsController < ApplicationController
+  before_action :ensure_location_schema
   before_action :set_location, only: %w[show update destroy]
   before_action :find_locatables, only: :create
 
@@ -14,27 +15,27 @@ class LocationsController < ApplicationController
 
   def closest
     @location = Location.closest_by(
-      [params[:lat], params[:lng]],
-      params[:type],
-      current_user.id
+      Coordinate.new(params[:lat], params[:lng]),
+      params[:type], current_user.id
     )
-
     render json: @location
   end
 
   def within
     @locations = Location.within_by(
-      params[:distance],
-      [params[:lat], params[:lng]],
-      params[:type],
-      current_user.id
+      Area.new(
+        params[:distance],
+        Coordinate.new(params[:lat], params[:lng])
+      ),
+      params[:type], current_user.id
     )
-
     render json: @locations
   end
 
   def create
-    @location = current_user.locations.create(location_params)
+    @location = current_user.locations.create(
+      lat: params[:lat], lng: params[:lng]
+    )
     @locatables&.map { |l| @location.locatable_items.build(locatable: l) }
 
     if @location.save
@@ -83,5 +84,18 @@ class LocationsController < ApplicationController
       :type,
       item_ids: %i[id]
     )
+  end
+
+  def ensure_location_schema
+    case params[:action]
+    when 'closest'
+      ensure_schema!(Locations::ClosestSchema)
+    when 'within'
+      ensure_schema!(Locations::WithinSchema)
+    when 'create'
+      ensure_schema!(Locations::CreateSchema)
+    when 'update'
+      ensure_schema!(Locations::UpdateSchema)
+    end
   end
 end

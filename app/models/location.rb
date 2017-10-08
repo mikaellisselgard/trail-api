@@ -24,7 +24,7 @@ class Location < ApplicationRecord
   attr_accessor :distance
 
   def self.closest_by(coordinates, type, user_id)
-    closest(origin: coordinates)
+    closest(origin: coordinates.to_a)
       .where(user_id: user_id)
       .joins(:locatable_items)
       .find_by(
@@ -34,21 +34,20 @@ class Location < ApplicationRecord
       .calculate_distance_from(coordinates)
   end
 
-  def self.within_by(distance, coordinates, type, user_id)
-    within(distance, origin: coordinates)
+  def self.within_by(area, type, user_id)
+    within(area.distance, origin: area.coordinates.to_a)
       .distinct
       .where(user_id: user_id)
       .joins(:locatable_items)
       .where(
         'locatable_items.locatable_type = ?',
         type.classify
-      )
-      .map { |l| l.calculate_distance_from(coordinates) }
+      ).map { |l| l.calculate_distance_from(area.coordinates) }
       .sort_by(&:distance)
   end
 
   def calculate_distance_from(coordinates)
-    self.distance = distance_from(coordinates, units: :kms)
+    self.distance = distance_from(coordinates.to_a, units: :kms)
     self
   end
 end
