@@ -57,8 +57,6 @@ group :test do
   gem 'rspec-core'
   # https://github.com/rspec/rspec-rails
   gem 'rspec-rails'
-  # https://github.com/DatabaseCleaner/database_cleaner
-  gem 'database_cleaner'
   # https://github.com/colszowka/simplecov
   gem 'simplecov'
 end
