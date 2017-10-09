@@ -19,6 +19,7 @@ AllCops:
     - Guardfile
     - Rakefile
     - db/migrate/**/*
+    - spec/**/*
 
 Rails:
   Enabled: true
@@ -31,7 +32,6 @@ Metrics/BlockLength:
   Exclude:
     - config/environments/**/*
     - config/**/*
-    - spec/**/*.rb
 
 Style/AsciiComments:
   Enabled: false

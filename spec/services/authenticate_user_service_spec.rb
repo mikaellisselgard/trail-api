@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe AuthenticateUserService, type: :service do
   subject(:service) { described_class }

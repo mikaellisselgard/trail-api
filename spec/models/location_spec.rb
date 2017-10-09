@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe Location, type: :model do
   let!(:location) { create(:location_with_fish) }
