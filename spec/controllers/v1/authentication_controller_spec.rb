@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe AuthenticationController, type: :controller do
+describe V1::AuthenticationController, type: :controller do
   describe '#authenticate_user' do
     context 'with valid credentials' do
       let(:user) { create(:user) }

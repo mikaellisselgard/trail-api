@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UsersController < ApplicationController
+class V1::UsersController < V1::ApplicationController
   skip_before_action :authenticate_request, only: :create
   before_action :ensure_user_schema
   before_action :set_user, only: %w[show update]

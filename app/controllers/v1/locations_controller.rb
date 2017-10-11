@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LocationsController < ApplicationController
+class V1::LocationsController < V1::ApplicationController
   before_action :ensure_location_schema
   before_action :set_location, only: %w[show update destroy]
   before_action :find_locatables, only: :create

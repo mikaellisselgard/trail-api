@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe LocationsController, type: :controller do
+describe V1::LocationsController, type: :controller do
   let!(:fish) { create(:fish) }
   let!(:location) { create(:location_with_fish) }
   let!(:jwt) { generate_jwt(location.user) }

@@ -1,18 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  post 'v1/authenticate_user', to: 'authentication#authenticate_user'
+  scope module: :v1, path: '/api/v1' do
+    post 'authenticate_user', to: 'authentication#authenticate_user'
 
-  get    'v1/locations',         to: 'locations#index'
-  get    'v1/locations/:id',     to: 'locations#show'
-  get    'v1/locations_closest', to: 'locations#closest'
-  get    'v1/locations_within',  to: 'locations#within'
-  post   'v1/locations',         to: 'locations#create'
-  patch  'v1/locations/:id',     to: 'locations#update'
-  delete 'v1/locations',         to: 'locations#destroy'
+    get    'locations',         to: 'locations#index'
+    get    'locations/:id',     to: 'locations#show'
+    get    'locations_closest', to: 'locations#closest'
+    get    'locations_within',  to: 'locations#within'
+    post   'locations',         to: 'locations#create'
+    patch  'locations/:id',     to: 'locations#update'
+    delete 'locations',         to: 'locations#destroy'
 
-  get    'v1/users/:id', to: 'users#show'
-  post   'v1/users',     to: 'users#create'
-  patch  'v1/users/:id', to: 'users#update'
-  delete 'v1/users',     to: 'users#destroy'
+    get    'users/:id', to: 'users#show'
+    post   'users',     to: 'users#create'
+    patch  'users/:id', to: 'users#update'
+    delete 'users',     to: 'users#destroy'
+  end
 end
