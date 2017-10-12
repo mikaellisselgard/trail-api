@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Area
-  attr_accessor :distance, :coordinates
+  attr_reader :distance, :coordinates
 
   def initialize(distance, coordinates)
     @distance = distance

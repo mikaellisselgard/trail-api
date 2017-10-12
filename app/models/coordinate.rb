@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Coordinate
-  attr_accessor :lat, :lng
+  attr_reader :lat, :lng
 
   def initialize(lat, lng)
     @lat = lat
@@ -9,6 +9,6 @@ class Coordinate
   end
 
   def to_a
-    [@lat, @lng]
+    [lat, lng]
   end
 end
